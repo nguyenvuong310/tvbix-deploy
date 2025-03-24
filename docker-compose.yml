@@ -111,7 +111,7 @@ services:
     container_name: webserver
     restart: unless-stopped
     depends_on:
-      - server
+      - zabbix-frontend
     ports:
       - 80:80
       - 443:443
