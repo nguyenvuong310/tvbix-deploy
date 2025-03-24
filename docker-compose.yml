@@ -5,8 +5,8 @@ services:
     image: "zabbix/zabbix-server-pgsql:ubuntu-7.2.1"
     container_name: server
     restart: unless-stopped
-    # ports:
-    #   - "10051:10051"
+    ports:
+      - "10051:10051"
     environment:
       DB_SERVER_HOST: postgres
       DB_SERVER_PORT: 5432
@@ -24,8 +24,8 @@ services:
     image: zabbix/zabbix-web-service:ubuntu-7.2.1
     container_name: web-service
     restart: unless-stopped
-    # ports:
-    #   - "10053:10053"
+    ports:
+      - "10053:10053"
     environment:
       ZBX_WEBSERVICE_LISTENPORT: 10053
       ZBX_ALLOWEDIP: "0.0.0.0/0"
@@ -61,8 +61,8 @@ services:
     image: zabbix/zabbix-agent:ubuntu-7.2.1
     container_name: zabbix-agent
     restart: unless-stopped
-    # ports:
-    #   - "10050:10050"
+    ports:
+      - "10050:10050"
     environment:
       ZBX_ACTIVE_ALLOW: false
       TZ: ${TZ}
