@@ -1,3 +1,5 @@
+version: "3.8"
+
 services:
   zabbix-server:
     image: "zabbix/zabbix-server-pgsql:ubuntu-7.2.1"
@@ -22,8 +24,7 @@ services:
     image: zabbix/zabbix-web-service:ubuntu-7.2.1
     container_name: zabbix-web-service
     restart: unless-stopped
-    platforms:
-      - linux/amd64
+    platform: linux/amd64
     ports:
       - "10053:10053"
     environment:
