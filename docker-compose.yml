@@ -22,7 +22,7 @@ services:
 
   zabbix-web-service:
     image: zabbix/zabbix-web-service:ubuntu-7.2.1
-    container_name: zabbix-web-service
+    container_name: web-service
     restart: unless-stopped
     # ports:
     #   - "10053:10053"
