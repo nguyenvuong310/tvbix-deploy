@@ -121,6 +121,16 @@ services:
     networks:
       - network-datn-deploy
 
+  ssl:
+    image: certbot/certbot:v2.10.0
+    container_name: ssl
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+    volumes:
+      - ./webserver/certbot/conf:/etc/letsencrypt
+      - ./webserver/certbot/www:/var/www/certbot
+    networks:
+      - network-datn-deploy
+
 volumes:
   postgres: {}
 
