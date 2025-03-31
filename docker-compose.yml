@@ -95,13 +95,15 @@ services:
     depends_on:
       - zabbix-frontend
     ports:
-      - 80:80
-      - 443:443
-    command: '/bin/sh -c ''while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g "daemon off;"'''
+      - "80:80"
+      - "443:443"
+    command: >
+      sh -c "while :; do sleep 6h && nginx -s reload; done & nginx -g 'daemon off;'"
     volumes:
-      - ./webserver/nginx/app.conf:/etc/nginx/conf.d/app.conf:ro
       - ./webserver/certbot/conf:/etc/letsencrypt
       - ./webserver/certbot/www:/var/www/certbot
+      - ./webserver/nginx/app.conf:/etc/nginx/conf.d/app.conf:ro
+
     networks:
       - network-datn-deploy
 
