@@ -6,7 +6,7 @@ if ! [ -x "$(command -v docker compose)" ]; then
   exit 1
 fi
 
-domains="ec2-3-93-219-141.compute-1.amazonaws.com" # Add your domain(s)
+domains="tvbix.xyz" # Add your domain(s)
 rsa_key_size=4096
 data_path="./webserver/certbot"
 email="trungvuong310@gmail.com" # Adding a valid address is strongly recommended
