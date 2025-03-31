@@ -1,2 +1,8 @@
 
 /backup_data
+
+# certbot
+webserver/certbot
+
+# Vscode
+.vscode

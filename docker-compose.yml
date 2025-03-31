@@ -110,7 +110,6 @@ services:
     volumes:
       - ./webserver/certbot/conf:/etc/letsencrypt
       - ./webserver/certbot/www:/var/www/certbot
-      - /etc/letsencrypt:/etc/letsencrypt
     networks:
       - network-datn-deploy
 
