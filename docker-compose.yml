@@ -100,6 +100,8 @@ services:
     command: '/bin/sh -c ''while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g "daemon off;"'''
     volumes:
       - ./webserver/nginx/app.conf:/etc/nginx/conf.d/app.conf:ro
+      - ./webserver/certbot/conf:/etc/letsencrypt
+      - ./webserver/certbot/www:/var/www/certbot
     networks:
       - network-datn-deploy
 
@@ -110,7 +112,6 @@ services:
     volumes:
       - ./webserver/certbot/conf:/etc/letsencrypt/:rwv
       - ./webserver/certbot/www:/var/www/certbot/:rw
-      - /etc/letsencrypt:/etc/letsencrypt
     networks:
       - network-datn-deploy
 
