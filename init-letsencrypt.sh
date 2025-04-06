@@ -72,7 +72,7 @@ docker compose run --rm --entrypoint "\
     --rsa-key-size $rsa_key_size \
     --agree-tos \
     --force-renewal" ssl
-echo
+
 
 echo "### Reloading nginx ..."
 docker compose exec webserver nginx -s reload
