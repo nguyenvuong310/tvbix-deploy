@@ -37,7 +37,6 @@ services:
   zabbix-frontend:
     image: "vuong676/tvbix:latest"
     restart: unless-stopped
-    container_name: frontend
     # ports:
     #   - "8080:8080"
     #   - "8443:8443"

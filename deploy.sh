@@ -53,7 +53,7 @@ deploy() {
 
   echo "Final Nginx reload"
   reload_nginx
-  echo "Deploy backend version $version successfully!!!"
+  echo "Deploy frontend version $version successfully!!!"
 
   echo "Cleaning up unused images"
   docker image prune -a -f
