@@ -2,7 +2,7 @@
 set -e
 
 nginx_service_name="webserver"
-service_name="frontend"
+service_name="zabbix-frontend"
 
 # Function to reload Nginx
 reload_nginx() {
@@ -22,7 +22,7 @@ deploy() {
   version=$1
   export VERSION=$version
 
-  echo "Start deploy backend version $version...."
+  echo "Start deploy frontend version $version...."
   old_container_id=$(docker ps -f name=$service_name -q | tail -n1)
 
   echo "Create new container"
