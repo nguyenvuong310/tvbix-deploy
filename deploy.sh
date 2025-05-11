@@ -13,7 +13,7 @@ reload_nginx() {
 # Function to handle failures
 handle_failure() {
   echo -e "\nDeployment failed. Routing requests to the old container."
-  //reload_nginx
+  reload_nginx
   exit 111
 }
 
