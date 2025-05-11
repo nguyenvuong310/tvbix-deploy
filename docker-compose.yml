@@ -34,7 +34,7 @@ services:
     networks:
       - network-datn-deploy
 
-  zabbix-frontend:
+  frontend:
     image: "vuong676/tvbix:latest"
     restart: unless-stopped
     # ports:
@@ -92,7 +92,7 @@ services:
     container_name: webserver
     restart: unless-stopped
     depends_on:
-      - zabbix-frontend
+      - frontend
     ports:
       - "80:80"
       - "443:443"

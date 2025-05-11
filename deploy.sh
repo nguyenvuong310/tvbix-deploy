@@ -2,7 +2,7 @@
 set -e
 
 nginx_service_name="webserver"
-service_name="zabbix-frontend"
+service_name="frontend"
 
 # Function to reload Nginx
 reload_nginx() {
@@ -26,7 +26,7 @@ deploy() {
   old_container_id=$(docker ps -f name=$service_name -q | tail -n1)
 
   echo "Create new container"
-  docker compose up -d --no-deps --scale $service_name=3 --no-recreate $service_name
+  docker compose up -d --no-deps --scale $service_name=2 --no-recreate $service_name
 
   echo "Health check new container"
   new_container_id=$(docker ps -f name=$service_name -q | head -n1)
@@ -36,7 +36,7 @@ deploy() {
     echo "Deploy failed. Cannot start container."
     docker stop $new_container_id
     docker rm $new_container_id
-    docker compose up -d --no-deps --scale $service_name=2 --no-recreate $service_name
+    docker compose up -d --no-deps --scale $service_name=1 --no-recreate $service_name
     handle_failure  
   }
 
@@ -48,12 +48,12 @@ deploy() {
   docker rm $old_container_id
   echo "Old container removed"
 
-  echo "Setting scale to 2"
-  docker compose up -d --no-deps --scale $service_name=2 --no-recreate $service_name
+  echo "Setting scale to 1"
+  docker compose up -d --no-deps --scale $service_name=1 --no-recreate $service_name
 
   echo "Final Nginx reload"
   reload_nginx
-  echo "Deploy frontend version $version successfully!!!"
+  echo "Deploy  version $version successfully!!!"
 
   echo "Cleaning up unused images"
   docker image prune -a -f
